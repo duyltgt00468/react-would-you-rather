@@ -18,7 +18,7 @@ const Dashboard = ({ authedUser, questions, users }) => {
                         {questions.filter(unanswered).map((question) => (
                             <div className="col" style={{ paddingBottom: 'calc(var(--bs-gutter-x) * .5)', paddingTop: 'calc(var(--bs-gutter-x) * .5)' }} key={question.id}>
                                 <div className="card" >
-                                    <Card question={question} author={users[question.author]} />
+                                    <Card question={question} author={users[question.author]} hasVoted={false} />
                                 </div>
                             </div>
                         ))}
@@ -35,7 +35,7 @@ const Dashboard = ({ authedUser, questions, users }) => {
                         {questions.filter(answered).map((question) => (
                             <div className="col" style={{ paddingBottom: 'calc(var(--bs-gutter-x) * .5)', paddingTop: 'calc(var(--bs-gutter-x) * .5)' }} key={question.id}>
                                 <div className="card" >
-                                    <Card question={question} author={users[question.author]} />
+                                    <Card question={question} author={users[question.author]} hasVoted={true}/>
                                 </div>
                             </div>
                         ))}
