@@ -63,14 +63,22 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
                             <div className="d-grid gap-1">
                                 <button onClick={handleOptionOne} disabled={hasVoted} className="btn btn-primary">
                                     {!hasVoted &&
-                                        <p p style={{ margin: '0px' }}>Click</p>
+                                        <p style={{ margin: '0px' }}>Click</p>
                                     }
                                     {hasVoted &&
-                                        <p p style={{ margin: '0px' }}>Votes: {question.optionOne.votes.length} ({calcPercentage("optionOne", question)})</p>
+                                        <p style={{ margin: '0px' }}>Votes: {question.optionOne.votes.length} ({calcPercentage("optionOne", question)})</p>
                                     }
                                 </button>
                             </div>
                         </div>
+                        {
+                            hasVoted && question.optionOne.votes.length > 0 &&
+                            <div className="card-footer text-muted">
+                                {question.optionOne.votes.map((item) => {
+                                    return <p key={item}>{item}</p>;
+                                })}
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="col-6">
@@ -91,6 +99,14 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
                                 </button>
                             </div>
                         </div>
+                        {
+                            hasVoted && question.optionTwo.votes.length > 0 &&
+                            <div className="card-footer text-muted">
+                                {question.optionTwo.votes.map((item) => {
+                                    return <p key={item}>{item}</p>;
+                                })}
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
